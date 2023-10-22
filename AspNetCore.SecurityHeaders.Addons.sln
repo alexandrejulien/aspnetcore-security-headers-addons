@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34202.233
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetCore.SecurityHeaders.Addons", "src\AspNetCore.SecurityHeaders.Addons\AspNetCore.SecurityHeaders.Addons.csproj", "{FC624EBA-9EED-43EC-983E-D089A5223531}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Peppermint.AspNetCore.SecurityHeaders.Addons", "src\AspNetCore.SecurityHeaders.Addons\Peppermint.AspNetCore.SecurityHeaders.Addons.csproj", "{FC624EBA-9EED-43EC-983E-D089A5223531}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetCore.SecurityHeaders.Addons.Tests", "tests\AspNetCore.SecurityHeaders.Addons.Tests\AspNetCore.SecurityHeaders.Addons.Tests.csproj", "{C57CFF54-59C3-44E5-8F61-4009F4FBA6FF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Peppermint.AspNetCore.SecurityHeaders.Addons.Tests", "tests\AspNetCore.SecurityHeaders.Addons.Tests\Peppermint.AspNetCore.SecurityHeaders.Addons.Tests.csproj", "{C57CFF54-59C3-44E5-8F61-4009F4FBA6FF}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1. src", "1. src", "{2E809BC9-6FAC-47FD-9263-196FC0275857}"
 EndProject

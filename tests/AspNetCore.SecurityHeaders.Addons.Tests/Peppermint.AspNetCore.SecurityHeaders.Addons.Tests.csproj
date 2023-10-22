@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFrameworks>net6.0;net7.0</TargetFrameworks>
@@ -24,7 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\AspNetCore.SecurityHeaders.Addons\AspNetCore.SecurityHeaders.Addons.csproj" />
+    <ProjectReference Include="..\..\src\AspNetCore.SecurityHeaders.Addons\Peppermint.AspNetCore.SecurityHeaders.Addons.csproj" />
   </ItemGroup>
 
 
