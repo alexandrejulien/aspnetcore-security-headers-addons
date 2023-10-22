@@ -18,7 +18,7 @@ jobs:
     - name: Setup GitVersion
       run: dotnet tool install --global GitVersion.Tool
     - name: Compute version
-      run: gitversion /output
+      run: dotnet gitversion /output
     - name: Restore dependencies
       run: dotnet restore ./AspNetCore.SecurityHeaders.Addons.sln
     - name: Build Debug
