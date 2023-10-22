@@ -1,0 +1,31 @@
+name: Release
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v2
+      with:
+        dotnet-version: 6.0.x 
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v2
+      with:
+        dotnet-version: 7.0.x
+    - name: Restore dependencies
+      run: dotnet restore ./AspNetCore.SecurityHeaders.Addons.sln
+    - name: Build Portable
+      run: dotnet build ./AspNetCore.SecurityHeaders.Addons.sln --no-restore --configuration Release
+    - name: Publish Portable
+      run: dotnet publish src/AspNetCore.SecurityHeaders.Addons/AspNetCore.SecurityHeaders.Addons.csproj  -o app/Portable
+    - name: Upload a Build Artifact all platforms
+      uses: actions/upload-artifact@v3.1.0
+      with:
+        name: Peppermint.ReverseProxy-portable-dotnet
+        path: app/Portable
+        
