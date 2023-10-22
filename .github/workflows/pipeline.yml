@@ -20,12 +20,12 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore ./AspNetCore.SecurityHeaders.Addons.sln
     - name: Build Portable
-      run: dotnet build ./AspNetCore.SecurityHeaders.Addons.sln --no-restore --configuration Release
-    - name: Publish Portable
-      run: dotnet pack src/AspNetCore.SecurityHeaders.Addons/AspNetCore.SecurityHeaders.Addons.csproj  -o app/Portable
+      run: dotnet build ./AspNetCore.SecurityHeaders.Addons.sln --configuration Release
+    - name: Nuget Package
+      run: dotnet pack src/AspNetCore.SecurityHeaders.Addons/AspNetCore.SecurityHeaders.Addons.csproj
     - name: Upload a Build Artifact all platforms
       uses: actions/upload-artifact@v3.1.0
       with:
-        name: Peppermint.ReverseProxy-portable-dotnet
-        path: app/Portable
+        name: AspNetCore.SecurityHeaders.Addons
+        path: packages
         
