@@ -1,4 +1,4 @@
-name: PR-CI
+name: PR-Code-Analysis
 
 on:
   pull_request:
