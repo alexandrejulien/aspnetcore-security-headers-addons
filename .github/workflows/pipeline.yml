@@ -2,6 +2,8 @@ name: Release-Pipeline
 on:
   push:
     branches: [ "main", "feature/*" ]
+    tags:
+      - 'v*.*.*'
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -17,8 +19,6 @@ jobs:
         dotnet-version: 7.0.x
     - name: Setup GitVersion
       run: dotnet tool install --global GitVersion.Tool
-    - name: Compute version
-      run: dotnet gitversion /output
     - name: Restore dependencies
       run: dotnet restore ./AspNetCore.SecurityHeaders.Addons.sln
     - name: Build Debug
@@ -26,7 +26,7 @@ jobs:
     - name: Build Release
       run: dotnet build ./AspNetCore.SecurityHeaders.Addons.sln --configuration Release
     - name: Nuget Package
-      run: dotnet pack src/AspNetCore.SecurityHeaders.Addons/Peppermint.AspNetCore.SecurityHeaders.Addons.csproj -o ./packages
+      run: dotnet pack src/AspNetCore.SecurityHeaders.Addons/Peppermint.AspNetCore.SecurityHeaders.Addons.csproj -o ./packages -v GITHUB_REF_NAME
     - name: Upload a Build Artifact all platforms
       uses: actions/upload-artifact@v3.1.0
       with:
