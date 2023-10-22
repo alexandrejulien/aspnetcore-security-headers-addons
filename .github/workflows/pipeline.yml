@@ -28,9 +28,4 @@ jobs:
       with:
         name: Peppermint.ReverseProxy-portable-dotnet
         path: app/Portable
-    - name: Login to DockerHub
-      uses: docker/login-action@v1 
-      with:
-        username: ${{ secrets.DOCKERHUB_USERNAME }}
-        password: ${{ secrets.DOCKERHUB_TOKEN }}
         
