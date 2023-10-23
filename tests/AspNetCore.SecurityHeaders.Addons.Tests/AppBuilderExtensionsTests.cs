@@ -2,6 +2,7 @@
 using Joonasw.AspNetCore.SecurityHeaders;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
+using NFluent;
 
 namespace AspNetCore.SecurityHeaders.Addons.Tests
 {
@@ -15,7 +16,7 @@ namespace AspNetCore.SecurityHeaders.Addons.Tests
             var provider = services.BuildServiceProvider();
             IApplicationBuilder app = new ApplicationBuilder(provider);
             app.UseFeaturePolicy();
-            app.UsePermissionsPolicy();
+            Check.ThatCode( () => app.UsePermissionsPolicy()).DoesNotThrow();
             app.UseCsp();
         }
 
@@ -27,10 +28,12 @@ namespace AspNetCore.SecurityHeaders.Addons.Tests
             var provider = services.BuildServiceProvider();
             IApplicationBuilder app = new ApplicationBuilder(provider);
             app.UseFeaturePolicy();
-            app.UsePermissionsPolicy(config =>
-            {
-                config.AllowOtherFeature("everything");
-            });
+            Check.ThatCode(() =>
+                app.UsePermissionsPolicy(config =>
+                {
+                    config.AllowOtherFeature("everything");
+                }))
+            .DoesNotThrow();
             app.UseCsp();
         }
     }
