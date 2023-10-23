@@ -1,4 +1,4 @@
-using AspNetCore.SecurityHeaders.Addons.PermissionsPolicy;
+﻿using AspNetCore.SecurityHeaders.Addons.PermissionsPolicy;
 using Joonasw.AspNetCore.SecurityHeaders;
 using Joonasw.AspNetCore.SecurityHeaders.FeaturePolicy.Options;
 using Microsoft.AspNetCore.Http;
@@ -14,7 +14,7 @@ namespace AspNetCore.SecurityHeaders.Addons.Tests
         [Fact]
         public async Task Given_PermissionPolicy_When_ConfigureSecurityHeaders_Then_CheckPermissionsPolicyHeaderAddedCorrectly()
         {
-            string headerValue = null;
+            string? headerValue = null;
             RequestDelegate mockNext = (HttpContext ctx) =>
             {
                 headerValue = ctx.Response.Headers[headerName];
@@ -56,7 +56,7 @@ namespace AspNetCore.SecurityHeaders.Addons.Tests
         }
 
         [Fact]
-        public async Task Given_NullOptions_When_ConfigureSecurityHeaders_Then_ThrowArgumentNullException()
+        public void Given_NullOptions_When_ConfigureSecurityHeaders_Then_ThrowArgumentNullException()
         {
             string headerValue = null;
             RequestDelegate mockNext = (HttpContext ctx) =>
