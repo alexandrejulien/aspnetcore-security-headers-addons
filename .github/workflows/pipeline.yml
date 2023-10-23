@@ -1,31 +1,36 @@
-name: Release
-
+name: Release-Pipeline
 on:
   push:
-    branches: [ "main" ]
-
+    branches: [ "main", "feature/*" ]
+    tags:
+      - 'v*.*.*'
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
-    - name: Setup .NET
+    - name: Setup .NET 6.0
       uses: actions/setup-dotnet@v2
       with:
         dotnet-version: 6.0.x 
-    - name: Setup .NET
+    - name: Setup .NET 7.0
       uses: actions/setup-dotnet@v2
       with:
         dotnet-version: 7.0.x
+    - name: Setup GitVersion
+      run: dotnet tool install --global GitVersion.Tool
     - name: Restore dependencies
       run: dotnet restore ./AspNetCore.SecurityHeaders.Addons.sln
-    - name: Build Portable
-      run: dotnet build ./AspNetCore.SecurityHeaders.Addons.sln --no-restore --configuration Release
-    - name: Publish Portable
-      run: dotnet publish src/AspNetCore.SecurityHeaders.Addons/AspNetCore.SecurityHeaders.Addons.csproj  -o app/Portable
+    - name: Build Debug
+      run: dotnet build ./AspNetCore.SecurityHeaders.Addons.sln --configuration Debug      
+    - name: Build Release
+      run: dotnet build ./AspNetCore.SecurityHeaders.Addons.sln --configuration Release
+    - name: Nuget Package
+      run: dotnet pack src/AspNetCore.SecurityHeaders.Addons/Peppermint.AspNetCore.SecurityHeaders.Addons.csproj -o ./packages --version-prefix $(GITHUB_REF_NAME)
     - name: Upload a Build Artifact all platforms
       uses: actions/upload-artifact@v3.1.0
       with:
-        name: Peppermint.ReverseProxy-portable-dotnet
-        path: app/Portable
-        
+        name: AspNetCore.SecurityHeaders.Addons
+        path: ./packages
+    -  name: Publish on Nuget.org
+       run: dotnet nuget push **.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
