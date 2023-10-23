@@ -4,7 +4,7 @@ on:
     branches:
       - main
   pull_request:
-    branches: [ "main", "release/**", "feature/**" ]
+    branches: ["main"]
 jobs:
   analysis:
     runs-on: windows-latest
