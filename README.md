@@ -5,7 +5,7 @@ https://github.com/juunas11/aspnetcore-security-headers
 
 Actualy, the addons cover the "Permissions-Policy" which is the renamed version of "Features-Policy" headers.
 
-The library is available on Nuget : [Coming Soon]
+The library is available on Nuget : https://www.nuget.org/packages/Peppermint.AspNetCore.SecurityHeaders.Addons
 
 # Example
 
