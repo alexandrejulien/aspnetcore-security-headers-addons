@@ -14,7 +14,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3. github", "3. github", "{4ED40CAD-7F99-465F-9EF9-738C4D457F5A}"
 	ProjectSection(SolutionItems) = preProject
 		.github\workflows\code-analysis.yml = .github\workflows\code-analysis.yml
-		.github\workflows\pr-check.yml = .github\workflows\pr-check.yml
 		.github\workflows\release.yml = .github\workflows\release.yml
 	EndProjectSection
 EndProject
