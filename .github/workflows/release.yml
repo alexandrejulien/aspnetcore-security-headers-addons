@@ -21,11 +21,11 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore ./AspNetCore.SecurityHeaders.Addons.sln
     - name: Build Debug
-      run: dotnet build ./AspNetCore.SecurityHeaders.Addons.sln --configuration Debug      
+      run: dotnet build ./AspNetCore.SecurityHeaders.Addons.sln --configuration Debug -p:Version=$(GITHUB_REF_NAME)
     - name: Build Release
-      run: dotnet build ./AspNetCore.SecurityHeaders.Addons.sln --configuration Release
+      run: dotnet build ./AspNetCore.SecurityHeaders.Addons.sln --configuration Release -p:Version=$(GITHUB_REF_NAME)
     - name: Nuget Package
-      run: dotnet pack src/AspNetCore.SecurityHeaders.Addons/Peppermint.AspNetCore.SecurityHeaders.Addons.csproj -o ./packages -p:PackageVersion=$(GITHUB_REF_NAME) 
+      run: dotnet pack src/AspNetCore.SecurityHeaders.Addons/Peppermint.AspNetCore.SecurityHeaders.Addons.csproj -o ./packages
     - name: Upload a Build Artifact all platforms
       uses: actions/upload-artifact@v3.1.0
       with:
