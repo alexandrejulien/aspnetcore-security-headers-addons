@@ -18,18 +18,18 @@ jobs:
         dotnet-version: 7.0.x
     - name: Setup GitVersion
       run: dotnet tool install --global GitVersion.Tool
-    - name: Restore dependencies
+    - name: Restore DotNet dependencies
       run: dotnet restore ./src/AspNetCore.SecurityHeaders.Addons/Peppermint.AspNetCore.SecurityHeaders.Addons.csproj
     - name: 🏗️ Build Debug
       run: dotnet build ./src/AspNetCore.SecurityHeaders.Addons/Peppermint.AspNetCore.SecurityHeaders.Addons.csproj --configuration Debug -p:Version=${GITHUB_REF_NAME}
     - name: 🏗️ Build Release
       run: dotnet build ./src/AspNetCore.SecurityHeaders.Addons/Peppermint.AspNetCore.SecurityHeaders.Addons.csproj --configuration Release -p:Version=${GITHUB_REF_NAME}
-    - name: Nuget Package
+    - name: 📦 Nuget Pack
       run: dotnet pack ./src/AspNetCore.SecurityHeaders.Addons/Peppermint.AspNetCore.SecurityHeaders.Addons.csproj -o ./packages -p:Version=${GITHUB_REF_NAME}
-    - name: Upload a Build Artifact all platforms
+    - name: Upload a Build Artifact
       uses: actions/upload-artifact@v3.1.0
       with:
         name: AspNetCore.SecurityHeaders.Addons
         path: ./packages
-    -  name: Publish on Nuget.org
+    -  name: 🚀Publish on Nuget.org
        run: dotnet nuget push **.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate

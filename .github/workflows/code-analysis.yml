@@ -5,7 +5,9 @@ on:
       - main
       - fix/*
       - release/*
-      - feature/* 
+      - feature/*
+    tags:
+      - '*'
   pull_request:
     branches: ["main"]
 jobs:
