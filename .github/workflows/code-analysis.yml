@@ -6,6 +6,7 @@ on:
       - fix/*
       - release/*
       - feature/*
+      - technical/*
     tags:
       - '*'
   pull_request:
