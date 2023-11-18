@@ -11,7 +11,7 @@ jobs:
     - name: Setup .NET SDK
       uses: actions/setup-dotnet@v2
       with:
-        include-prerelease: true
+        include-prerelease: false
         dotnet-version: |
           6.0.x
           7.0.x
