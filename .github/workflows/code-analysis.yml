@@ -19,9 +19,11 @@ jobs:
     - name: Setup .NET SDK
       uses: actions/setup-dotnet@v2
       with:
+        include-prerelease: false
         dotnet-version: |
           6.0.x
           7.0.x
+          8.0.x
     - name: Set up JDK 17
       uses: actions/setup-java@v1
       with:
