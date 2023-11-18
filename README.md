@@ -25,7 +25,7 @@ app.UsePermissionsPolicy();
 
 - .NET 6 runtime (LTS)
 - .NET 7 runtime (STS)
-- .NET 8 (Preview) (LTS)
+- .NET 8 (LTS)
 
 # Tiers-libraries
 
